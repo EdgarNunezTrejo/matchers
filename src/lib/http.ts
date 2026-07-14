@@ -19,6 +19,7 @@ const getRequest = async <TRes>({ params, version = 'v1', headers, path }: GetRe
 
 const postRequest = async <TRes, TReq = unknown>({ params, version = 'v1', headers, path, body }: PostRequestType<unknown, TReq>):Promise<TRes> => {
     const queryString = params ? `?${new URLSearchParams(params as Record<string, string>).toString()}` : '';
+    console.log(`${API_URL}/api/${version}/${path}${queryString}`)
     const response = await fetch(`${API_URL}/api/${version}/${path}${queryString}`,
         {
             method: 'POST',

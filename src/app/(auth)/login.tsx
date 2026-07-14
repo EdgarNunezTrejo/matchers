@@ -1,8 +1,10 @@
 import LockIcon from '@/assets/images/actionIcons/lock.svg';
 import MailIcon from '@/assets/images/actionIcons/mail.svg';
-import { AuthScreenTemplate, Button, CustomInput, Link, Modal, Text, Toast } from "@/components";
+import { AuthScreenTemplate, Button, CustomInput, Link, Modal, OrDivider, SocialSignInGroup, Text, Toast } from "@/components";
 import { Spacing } from '@/constants/theme';
+import useAppleAuth from '@/hooks/use-apple-auth';
 import useAuth from '@/hooks/use-auth';
+import useGoogleAuth from '@/hooks/use-google-auth';
 import { useTheme } from '@/hooks/use-theme';
 import { loginSchema, LoginValues } from '@/validators/loginSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +21,8 @@ const Login = () => {
     );
     const theme = useTheme();
     const { loadingLogIn, signIn } = useAuth();
+    const { signInWithGoogle, loadingGoogleAuth } = useGoogleAuth();
+    const { signinWithApple, loadingAppleAuth } = useAppleAuth();
 
     const handleLogin = async () => {
         const isValid = await trigger();
@@ -83,6 +87,8 @@ const Login = () => {
                     <Button onPress={handleLogin} loading={loadingLogIn}>
                         Log in
                     </Button>
+                    <OrDivider />
+                    <SocialSignInGroup onApple={signinWithApple} onGoogle={signInWithGoogle} loadingGoogleAuth={loadingGoogleAuth} loadingAppleAuth={loadingAppleAuth} />
                     <View style={style.haveAccount}>
                         <Text>
                             Don't have an account?

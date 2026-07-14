@@ -61,7 +61,7 @@ const CustomInput: React.FC<TextInputProps & CustomInputProps> = ({
                 <TextInput
                     inputMode={inputMode}
                     placeholder={placeholder}
-                    style={[style.input, {color: theme.text.primary}]}
+                    style={[style.input, { color: theme.text.primary }]}
                     {...isPassword ? { secureTextEntry: !showPassword } : {}}
                     {...rest}
                 />
@@ -70,9 +70,9 @@ const CustomInput: React.FC<TextInputProps & CustomInputProps> = ({
             {error?.length && <Text variant='labelSm' style={[{ color: theme.status.error }]}>
                 {error?.toUpperCase()}
             </Text>}
-            <Text variant='labelSm'>
+            {info && <Text variant='labelSm'>
                 {info}
-            </Text>
+            </Text>}
         </View>
     );
 }

@@ -1,15 +1,16 @@
 import { Spacing } from "@/constants/theme";
 import { useTheme } from "@/hooks/use-theme";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type AuthScreenTemplateProps = {
     children: React.ReactNode;
+    style?: StyleProp<ViewStyle>
 }
 
-const AuthScreenTemplate: React.FC<AuthScreenTemplateProps> = ({ children }) => {
+const AuthScreenTemplate: React.FC<AuthScreenTemplateProps> = ({ children, style: StyleProps }) => {
     const theme = useTheme();
     return (
-        <View style={[style.container, { backgroundColor: theme.background.primary }]}>
+        <View style={[style.container, { backgroundColor: theme.background.primary }, StyleProps]}>
             {children}
         </View>
     );

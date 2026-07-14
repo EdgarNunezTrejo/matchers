@@ -1,16 +1,13 @@
 import { Button } from "@/components/atoms";
-import { OrDivider, SocialSignInGroup } from "@/components/molecules";
 import { Spacing } from "@/constants/theme";
 import { StyleSheet, View } from "react-native";
 
 type AuthWelcomeActionsProps = {
     onCreateAccount: () => void;
     onSignIn: () => void;
-    onGoogle: () => void;
-    onApple: () => void;
 }
 
-const AuthWelcomeActions: React.FC<AuthWelcomeActionsProps> = ({ onCreateAccount, onSignIn, onGoogle, onApple }) => {
+const AuthWelcomeActions: React.FC<AuthWelcomeActionsProps> = ({ onCreateAccount, onSignIn }) => {
     return (
         <View style={style.container}>
             <View style={style.buttons}>
@@ -21,8 +18,6 @@ const AuthWelcomeActions: React.FC<AuthWelcomeActionsProps> = ({ onCreateAccount
                     Sign in
                 </Button>
             </View>
-            <OrDivider />
-            <SocialSignInGroup onGoogle={onGoogle} onApple={onApple} />
         </View>
     );
 }

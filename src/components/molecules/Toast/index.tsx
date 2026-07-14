@@ -14,9 +14,9 @@ const CustomToast: React.FC<ToastConfigParams<unknown>> = ({ type: typeProps, te
     const theme = useTheme();
     const type = typeProps as ToastTypes;
     return (
-        <View style={{ backgroundColor: theme.toast[type], borderRadius: Spacing.md, padding: Spacing.sm, flexWrap: 'wrap' }}>
+        <View style={{ backgroundColor: theme.toast[type], borderRadius: Spacing.md, padding: Spacing.sm, maxWidth: 250 }}>
             <Text variant='labelMd'>{text1}</Text>
-            <Text variant='labelSm'>{text2}</Text>
+            <Text variant='labelSm' style={{flexWrap: 'wrap'}}>{text2}</Text>
         </View>
     );
 }

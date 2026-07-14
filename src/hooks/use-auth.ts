@@ -35,7 +35,7 @@ const useAuth = () => {
         }
         setLoadingLogIn(false);
     }
-    const signUp = async ({ email: Email, password: Password, match: InviteCode, terms: AcceptsTermsAndConditions }: RegisterValues) => {
+    const signUp = async ({ email: Email, password: Password, match: InviteCode, terms: AcceptsTermsAndConditions, name, lastName }: RegisterValues) => {
         setLoadingRegister(true);
         const body = {
             Email,
@@ -43,6 +43,8 @@ const useAuth = () => {
             InviteCode,
             AcceptsTermsAndConditions,
             Platform: Platform.OS.toLowerCase(),
+            Name: name,
+            LastName: lastName,
         };
         try {
             const { token } = await http.post<AuthResponseType>({ path: "Auth/register", body });
